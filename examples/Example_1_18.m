@@ -36,7 +36,6 @@ function Example_1_18
     User subfunctions required: rates
 %}
 % ------------------------------------------------------------------------
-    clear; close all; clc
     %...Input data:
     m = 1;
     z = 0.03;
@@ -97,13 +96,13 @@ function Example_1_18
             + C1*sin(w*t) + C2*cos(w*t);
         %...Plot solutions
         % Exact:
-        subplot(5,1,1)
+        ax1 = subplot(5,1,1);
         plot(t/max(t), x/max(x), 'k', 'LineWidth',1)
         grid off
         axis tight
         title('Exact')
         % RK1:
-        subplot(5,1,2)
+        ax2 = subplot(5,1,2);
         plot(t1/max(t1), f1(:,1)/max(f1(:,1)), '-r', 'LineWidth',1)
         hold on
         plot(t11/max(t11), f11(:,1)/max(f11(:,1)), '-k')
@@ -112,7 +111,7 @@ function Example_1_18
         title('RK1')
         legend('h = 0.01', 'h = 0.1')
         % RK2:
-        subplot(5,1,3)
+        ax3 = subplot(5,1,3);
         plot(t2/max(t2), f2(:,1)/max(f2(:,1)), '-r', 'LineWidth',1)
         hold on
         plot(t21/max(t21), f21(:,1)/max(f21(:,1)), '-k')
@@ -121,7 +120,7 @@ function Example_1_18
         title('RK2')
         legend('h = 0.1', 'h = 0.5')
         % RK3:
-        subplot(5,1,4)
+        ax4 = subplot(5,1,4);
         plot(t3/max(t3), f3(:,1)/max(f3(:,1)), '-r', 'LineWidth',1)
         hold on
         plot(t31/max(t31), f31(:,1)/max(f31(:,1)), '-k')
@@ -130,7 +129,7 @@ function Example_1_18
         title('RK3')
         legend('h = 0.5', 'h = 1.0')
         % RK4:
-        subplot(5,1,5)
+        ax5 = subplot(5,1,5);
         plot(t4/max(t4), f4(:,1)/max(f4(:,1)), '-r', 'LineWidth',1)
         hold on
         grid off
@@ -138,6 +137,8 @@ function Example_1_18
         axis tight
         title('RK4')
         legend('h = 1.0', 'h = 2.0')
+        
+        linkaxes([ax1, ax2, ax3, ax4, ax5])
     end %output
 end %Example_1_18
 % wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
